@@ -7,8 +7,8 @@ import (
 	"fmt"
 
 	"github.com/leonardo-luz/basic-goolang-api/cmd/api"
-	"github.com/leonardo-luz/basic-goolang-api/config"
-	"github.com/leonardo-luz/basic-goolang-api/db"
+	"github.com/leonardo-luz/basic-goolang-api/internal/config"
+	"github.com/leonardo-luz/basic-goolang-api/internal/db"
 )
 
 func main() {

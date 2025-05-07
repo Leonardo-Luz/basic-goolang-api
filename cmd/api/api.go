@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/leonardo-luz/basic-goolang-api/service/user"
+	"github.com/leonardo-luz/basic-goolang-api/pkg/service/user"
 )
 
 type ApiServer struct {
@@ -25,10 +25,11 @@ func (server *ApiServer) Run() error {
 	router := mux.NewRouter()
 	subrouter := router.PathPrefix("/api/v1").Subrouter()
 
+	// NOTE: Routes
 	userService := user.NewHandler()
-	userService.RegisterRoutes(subrouter)
+	userService.RegisterRoutes(subrouter.PathPrefix("/users").Subrouter())
 
-	log.Println("Server listenning on", server.address)
+	log.Println("Server listenning on http://localhost", server.address)
 
 	return http.ListenAndServe(server.address, router)
 }
